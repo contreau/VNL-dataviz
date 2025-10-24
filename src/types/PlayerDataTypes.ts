@@ -1,5 +1,10 @@
 export type team = [country: string, roster: Array<playerData>];
 
+export interface country {
+  name: string;
+  flagClass: string;
+}
+
 export interface playerData {
   "Attack Attempts": number;
   "Attack Errors": number;
