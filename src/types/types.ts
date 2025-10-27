@@ -1,11 +1,24 @@
-export type team = [country: string, roster: Array<playerData>];
+export type CountryCode =
+  | "ARG"
+  | "BRA"
+  | "BUL"
+  | "CAN"
+  | "CHN"
+  | "CUB"
+  | "FRA"
+  | "GER"
+  | "IRI"
+  | "ITA"
+  | "JPN"
+  | "NED"
+  | "POL"
+  | "SLO"
+  | "SRB"
+  | "TUR"
+  | "UKR"
+  | "USA";
 
-export interface country {
-  name: string;
-  flagClass: string;
-}
-
-export interface playerData {
+export interface PlayerData {
   "Attack Attempts": number;
   "Attack Errors": number;
   "Attack Points": number;
@@ -24,5 +37,17 @@ export interface playerData {
   "Spike Digs": number;
   "Successful Receives": number;
   "Successful Sets": number;
-  Team: string;
+  Team: CountryCode;
+}
+
+export type Roster = Array<PlayerData>;
+
+export interface Team {
+  country: CountryCode;
+  roster: Roster;
+}
+
+export interface Country {
+  name: string;
+  flagClass: string;
 }
