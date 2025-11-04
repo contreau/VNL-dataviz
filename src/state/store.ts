@@ -1,15 +1,27 @@
-import { ref } from "vue";
-import type { Team, CountryCode, PlayerData } from "../types/types";
+import { reactive } from "vue";
+import type { Team, Roster, CountryCode, PlayerData } from "../types/types";
 import * as d3 from "d3";
 
 type Store = {
   selectedCountry: CountryCode;
   allTeams: d3.InternMap<Team["country"], Team["roster"]> | null;
+  selectedRoster: Roster;
+  selectedPlayer: string;
+  getTeamRoster: Function;
+  updateSelectedPlayer: Function;
 };
 
-export const store = ref<Store>({
+export const store = reactive<Store>({
   selectedCountry: "ARG",
   allTeams: null,
+  selectedRoster: [],
+  selectedPlayer: "",
+  getTeamRoster(code: CountryCode) {
+    this.selectedRoster = this.allTeams?.get(code)!;
+  },
+  updateSelectedPlayer(name: string) {
+    this.selectedPlayer = name;
+  },
 });
 
 export async function initTeamData() {
@@ -19,5 +31,7 @@ export async function initTeamData() {
   );
   const allTeams = d3.group(playerData, (d) => d["Team"]);
   // set allTeams data in the store
-  store.value.allTeams = allTeams;
+  store.allTeams = allTeams;
+  store.selectedRoster = allTeams.get("ARG")!;
+  store.selectedPlayer = store.selectedRoster[0]?.Name!;
 }

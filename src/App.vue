@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import { initTeamData } from "./state/store";
-import CountryList from "./components/CountryList.vue";
-import PlayerDataView from "./components/PlayerDataView.vue";
+import SelectionSidebar from "./components/SelectionSidebar.vue";
+import { store } from "./state/store";
+import PlayerData from "./components/PlayerData.vue";
 
 onMounted(() => {
   initTeamData();
@@ -11,16 +12,16 @@ onMounted(() => {
 
 <template>
   <h1>Men's VNL 2025: Player Data by Country</h1>
-  <div class="display-panel">
-    <CountryList />
-    <PlayerDataView />
-  </div>
+  <main class="display-panel">
+    <SelectionSidebar />
+    <PlayerData />
+  </main>
 </template>
 
 <style>
-.display-panel {
+main {
   display: grid;
-  grid-template-columns: 20% 75%;
-  gap: 5%;
+  grid-template-columns: 250px auto;
+  gap: 5rem;
 }
 </style>

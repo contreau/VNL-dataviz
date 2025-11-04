@@ -11,7 +11,7 @@ body {
 }
 
 :root {
-  font-family: system-ui;
+  font-family: "DM Sans Variable", sans-serif;
   font-size: 16px;
   line-height: 1.15;
 }

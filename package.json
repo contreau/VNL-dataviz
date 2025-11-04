@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/dm-sans": "^5.2.8",
     "d3": "^7.9.0",
     "flag-icons": "^7.5.0",
     "vue": "^3.5.22"
